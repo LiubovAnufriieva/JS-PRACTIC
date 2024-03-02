@@ -1,61 +1,43 @@
-const allUsers = [
-  {
-    name: "Moore Hensley",
-    friends: ["Sharron Pace"]
-  },
-  {
-    name: "Sharlene Bush",
-    friends: ["Briana Decker", "Sharron Pace"]
-  },
-  {
-    name: "Ross Vazquez",
-    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"]
-  },
-  {
-    name: "Elma Head",
-    friends: ["Goldie Gentry", "Aisha Tran"]
-  },
-  {
-    name: "Carey Barr",
-    friends: ["Jordan Sampson", "Eddie Strong"]
-  },
-  {
-    name: "Blackburn Dotson",
-    friends: ["Jacklyn Lucas", "Linda Chapman"]
-  },
-  {
-    name: "Sheree Anthony",
-    friends: ["Goldie Gentry", "Briana Decker"]
-  }
-];
+// "use strict";
 
-const getUsersWithFriend = (allUsers, friendName) => {
-  return allUsers.filter(user => user.friends.includes(friendName))
-};
-
-console.log(getUsersWithFriend(allUsers, "Briana Decker")); 
-// [
-//   {
-//     name: "Sharlene Bush",
-//     friends: ["Briana Decker", "Sharron Pace"]
-//   },
-//   {
-//     name: "Sheree Anthony",
-//     friends: ["Goldie Gentry", "Briana Decker"]
+// const customer = {
+//   username: "Jacob",
+// 	sayHello() {
+// 		console.log(`Hello, ${this.username}!`);
 //   }
-// ]
+// };
 
-console.log(getUsersWithFriend(allUsers, "Goldie Gentry"));
-// [
-//   {
-//     name: "Elma Head",
-//     friends: ["Goldie Gentry", "Aisha Tran"]
-//   },
-//   {
-//     name: "Sheree Anthony",
-//     friends: ["Goldie Gentry", "Briana Decker"]
-//   }
-// ]
+// customer.sayHello(); // "Hello, Jacob!"
 
-console.log(getUsersWithFriend(allUsers, "Adrian Cross" )); // []
+// const greet = customer.sayHello.bind(customer);
+
+// greet(); // "Hello, Jacob!"
+    
+
+
+const cruiseControl = {
+    speed: 0,
+    brand: "Audi",
+    accelerate() {
+        this.speed += 10;
+        console.log(`Автомобіль ${this.brand} прискорюється. Швидкість ${this.speed}`);
+    },
+    decrease() {
+        if(this.speed <= 0) {
+            console.log('Авто зупинилось');
+            return;
+        }
+        this.speed -= 10;
+        console.log(`Автомобіль ${this.brand} гальмує. Швидкість ${this.speed}`);
+    }
+}
+
+cruiseControl.accelerate()
+cruiseControl.accelerate()
+
+cruiseControl.decrease()
+cruiseControl.decrease()
+cruiseControl.decrease()
+
+console.log(cruiseControl);
 
