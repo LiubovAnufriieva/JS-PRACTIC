@@ -30,25 +30,42 @@
 
 // const bloodseker = new Hero('Bloodseker');
 // const bloodseker1 = new Hero('Bloodseker');
-// // bloodseker.attack();
-// // console.log(bloodseker);
-// // console.log(bloodseker.heal());
-// // console.log(bloodseker);
+// bloodseker.attack();
+// console.log(bloodseker);
+// console.log(bloodseker.heal());
+// console.log(bloodseker);
 // console.log('counter', Hero.counter);
 
-// необхідно створити клас BankAccount, який представляє банківський рахунок. Клас повинен мати приватну властивість balance, яка представляє баланс рахунку. Клас повинен також мати публічні методи deposit та withdraw, які дозволяють здійснювати операції з депозитом та зняттям коштів з рахунку. При цьому balance повинна бути доступна ляше в межах класу BankAccount та його приватних методів. 
+
+
+// Необхідно створити клас BankAccount, який представляє банківський рахунок. 
+// Клас повинен мати приватну властивість balance, яка представляє баланс рахунку.
+// Клас повинен також мати публічні методи deposit та withdraw, які дозволяють 
+// здійснювати операції з депозитом та зняттям коштів з рахунку.При цьому balance 
+// повинна бути доступна ляше в межах класу BankAccount та його приватних методів. 
 
 class BankAccount {
-    constructor(balance) {
-        this.balance = balance;
+  #balance;
+  
+  constructor(initialBalance = 0) {
+      this.#balance = initialBalance;
     }
- 
-
-
+  deposit(amount) {
+    this.#balance += amount;
+  }
+  withdraw(amount) {
+    if (amount <= this.#balance) {
+      this.#balance -= amount;
+    } else {'Не достатньо коштів на рахунку'}
+  }
+  getBalance() {
+    return this.#balance;
+  }
 }
+const instance = new BankAccount(); 
 
-const instance = new BankAccount() 
-instance.deposit(100)
-instance.deposit(200)
-instance.withdraw(1000)
+instance.deposit(100);
+instance.deposit(200);
+instance.withdraw(1000);
 console.log(instance);
+
