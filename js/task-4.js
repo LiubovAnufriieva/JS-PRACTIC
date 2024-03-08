@@ -1,71 +1,28 @@
-// Необхідно створити клас Hero, який представляє героя з гри. Клас повинен мати публічні властивості 
-// name, level та health, що дозволить герою атакувати та відновлювати здоров'я видповідно. 
-// Також створити функціонал для підрахунку створених героїв. 
-// Властивість name має зберігати ім'я героя.
-// Властивість level має зберігати рівень героя.
-// Властивість health має зберігати поточний рівень здоров'я героя.
-// Метод attack наносить пошкодження в розмір 10 одиниць.
-// Метод heal додає до здоров'я героя 10 одиниць.
-
-// class Hero {
-//     static counter = 0; 
-//     static addHero() {
-//         Hero.counter += 1;
-//         console.log(`Кількість створених регоїв ${Hero.counter}`);
-//     }
-//     #level;
-//     constructor(name) {
-//         this.name = name;
-//         this.#level = 1;
-//         this.health = 200;
-//         Hero.addHero();
-//     } 
-//     attack() {
-//         console.log(`Attack with 10 damage`);
-//     }
-//     heal() {
-//         this.health += 10;
-//     }
-// }
-
-// const bloodseker = new Hero('Bloodseker');
-// const bloodseker1 = new Hero('Bloodseker');
-// bloodseker.attack();
-// console.log(bloodseker);
-// console.log(bloodseker.heal());
-// console.log(bloodseker);
-// console.log('counter', Hero.counter);
-
-
-
-// Необхідно створити клас BankAccount, який представляє банківський рахунок. 
-// Клас повинен мати приватну властивість balance, яка представляє баланс рахунку.
-// Клас повинен також мати публічні методи deposit та withdraw, які дозволяють 
-// здійснювати операції з депозитом та зняттям коштів з рахунку.При цьому balance 
-// повинна бути доступна ляше в межах класу BankAccount та його приватних методів. 
 
 class BankAccount {
-  #balance;
-  
-  constructor(initialBalance = 0) {
-      this.#balance = initialBalance;
+    constructor(accountNumber, balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
     }
-  deposit(amount) {
-    this.#balance += amount;
-  }
-  withdraw(amount) {
-    if (amount <= this.#balance) {
-      this.#balance -= amount;
-    } else {'Не достатньо коштів на рахунку'}
-  }
-  getBalance() {
-    return this.#balance;
-  }
+    withdraw(amount) {
+        if (amount <= this.balance) {
+            this.balance -= amount;
+            return `Знято ${amount} грн. Залишок на рахунку: ${this.balance} грн.`
+        } else {
+           return 'Недостатньо коштів на рахунку';
+        }
+    }
+    deposit(amount) {
+        this.balance += amount;
+        return `Поповнено ${amount} грн. Залишок на рахунку: ${this.balance} грн.` 
+    }
+    checkBalance() {
+        return  `Залишок на рахунку: ${this.balance} грн.`
+    }
 }
-const instance = new BankAccount(); 
-
-instance.deposit(100);
-instance.deposit(200);
-instance.withdraw(1000);
-console.log(instance);
+    const myAccount = new BankAccount('123', 2000);
+    console.log(myAccount.withdraw(500)); // Знято 500 грн. Залишок на рахунку: 1500 грн.
+    console.log(myAccount.withdraw(2000)); // Недостатньо коштів на рахунку
+    console.log(myAccount.deposit(1000)); // Поповнено 1000 грн. Залишок на рахунку: 2500 грн.
+    console.log(myAccount.checkBalance()); // Залишок на рахунку: 2500 грн.
 
